@@ -1,0 +1,546 @@
+/***************************************************************************/
+// FUNDAMENTOS DE PROGRAMACIÓN
+// GRADO EN INGENIERÍA INFORMÁTICA
+//  
+// CURSO 2014-2015
+// (C) FRANCISCO JOSÉ CORTIJO BON
+// DEPARTAMENTO DE CIENCIAS DE LA COMPUTACIÓN E INTELIGENCIA ARTIFICIAL
+//
+// RELACIÓN DE PROBLEMAS 5
+// EJERCICIO 9
+//
+/*	 
+	Ampliación del ejercicio 17 de la relación de problemas 4. 
+	
+	En ese ejercicio se presentaba la clase "Frase" para almacenar un conjunto
+	de caracteres usando un vector de caracteres como dato miembro privado.
+
+	En este ejercicio se presenta la clase "Palabra" para representar a una 
+	sucesión de caracteres que no contiene espacios en blanco intermedios.
+	Por lo tanto, un objeto de la clase "Frase" pasa a ser ahora una 
+	sucesión de objetos "Palabra". 
+	
+	Las tareas que se realizan en algunos de los métodos de la antigua clase 
+	"Frase" corresponden ahora a la clase "Palabra" (por ejemplo, 
+	"EliminaBlancosIniciales" y "EliminaBlancosFinales") y otros métodos 
+	deben reescribirse completamente (por ejemplo, "BorraPalabra").
+*/
+/***************************************************************************/
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <cctype>
+using namespace std;
+
+/////////////////////////////////////////////////////////////////////////////
+
+class Palabra 
+{
+
+private:
+
+	static const int TAMANIO = 25; // Número de casillas disponibles
+	char cadena_privada[TAMANIO];
+	
+	//PRE: 0 <= total_utilizados <= TAMANIO
+	int total_utilizados;	// Número de casillas ocupadas
+	
+public:
+	
+	/***********************************************************************/
+	// Constructor sin argumentos
+
+	Palabra (void) 	
+	{
+		total_utilizados = 0;
+	}
+
+	/***********************************************************************/
+	// Constructor con argumento string
+	// Recibe: la_palabra, dato string que se usa para iniciar el objeto.
+	// Si "la_palabra" tiene más caracteres que caben en el objeto, no se 
+	// copia nada y se crea un objeto vacío.
+	// 
+	// PRE: "la_palabra" está formada por una única palabra
+	
+	Palabra (string la_palabra) 	
+	{		
+		total_utilizados = 0;
+	
+		int longitud_la_palabra = la_palabra.length();
+			
+		if (longitud_la_palabra <= TAMANIO) {
+			
+			for (int i=0; i<longitud_la_palabra; i++)
+				cadena_privada[i]= la_palabra[i];
+				
+			total_utilizados = longitud_la_palabra;
+			
+			EliminaBlancosIniciales();
+			EliminaBlancosFinales();
+		}
+	}
+	
+	/***********************************************************************/
+	// Devuelve el número de casillas disponibles
+	
+	int Capacidad (void)
+	{
+		return (TAMANIO);
+	}
+	
+	/***********************************************************************/	
+	// Devuelve el número de caracteres.
+	
+	int NumCaracteres (void)
+	{
+		return (total_utilizados);
+	}
+	
+	/***********************************************************************/
+	// Devuelve el carácter de la casilla "indice" 
+	// Recibe: indice, la posición del carácter que queremos obtener.
+	//
+	// PRE: 0 <= indice < total_utilizados
+
+	char GetCaracter (int indice)
+	{
+		return (cadena_privada[indice]);
+	}
+	
+	/***********************************************************************/
+	// Añade un carácter a la palabra (al final)
+	// Recibe: c, el carácter que se va a añadir
+	// Recibe: nuevo, el elemento que se va a añadir.
+	//
+	// PRE: total_utilizados < TAMANIO
+	// 		La adición se realiza si hay espacio para el nuevo elemento. 
+	// 		El nuevo elemento se coloca al final del vector. 
+	// 		Si no hay espacio, no se hace nada.	
+
+	void Aniade (char c)
+	{
+		if (total_utilizados < TAMANIO) {
+			cadena_privada[total_utilizados] = c;
+			total_utilizados++;
+		}
+	}
+	
+	/*****************************************************************/
+	// Borra todos los blancos iniciales.
+
+	void EliminaBlancosIniciales (void) 
+	{
+		while (isspace(cadena_privada[0]) && (total_utilizados>0)) 
+			Elimina(0);
+	}
+
+	/*****************************************************************/
+	// Borra todos los blancos finales.
+
+	void EliminaBlancosFinales (void) 
+	{
+		while (isspace(cadena_privada[total_utilizados-1]) 
+			   && (total_utilizados>0)) 
+			Elimina(total_utilizados-1);
+	}
+
+	/***********************************************************************/
+	// Eliminar el carácter que se encuentre en la posición dada por 
+	// "indice".
+	// Realiza un borrado físico (con desplazamiento y sustitución).
+	//
+	// PRE: 0 <= indice < total_utilizados 
+	
+	void Elimina (int indice) 
+	{
+		// Recorremos de izquierda a derecha toda las componentes 
+		// que hay a la derecha de la posición a eliminar
+		//		Le asignamos a cada componente la que hay a su derecha
+
+		if ((indice >= 0) && (indice < total_utilizados)) {
+
+			int tope = total_utilizados-1; // posición del último 
+    
+			for (int i = indice ; i < tope ; i++)
+				cadena_privada[i] = cadena_privada[i+1];  
+    
+			total_utilizados--;    
+		}
+	}
+	
+	/***********************************************************************/
+	// Convierte una palabra a un string y lo devuelve 
+	
+	string ToString (void)
+	{
+		string el_string;
+		
+		el_string = "";
+		 
+		for (int i=0; i<total_utilizados; i++) 
+			el_string = el_string + cadena_privada[i];
+		
+		return (el_string);
+	}
+	
+	/***********************************************************************/
+	// Convierte una palabra a un string y lo devuelve 
+	// Versión de prueba y depuración
+	
+	string ToString_Debug (void)
+	{
+		string el_string;
+		
+		el_string = "|";
+		 
+		for (int i=0; i<total_utilizados; i++) 
+			el_string = el_string + cadena_privada[i] + "|";
+		
+		return (el_string);
+	}
+	
+	/***********************************************************************/	
+};
+
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+class Frase 
+{
+
+private:
+
+	static const int TAMANIO = 100; // Número de casillas disponibles
+	Palabra vector_privado_palabras[TAMANIO];
+	
+	//PRE: 0 <= total_utilizados <= TAMANIO
+	int total_utilizados;	// Número de casillas ocupadas
+	
+public:
+	
+	/***********************************************************************/
+	// Constructor sin argumentos
+
+	Frase (void) 	
+	{
+		total_utilizados = 0;
+	}
+
+	/***********************************************************************/
+	// Constructor con un argumento "Palabra"
+
+	Frase (Palabra la_palabra) 	
+	{
+		vector_privado_palabras[0] = la_palabra;
+		total_utilizados = 1;
+	}
+
+	/***********************************************************************/
+	// Constructor con argumento string
+	// Recibe: la_frase, dato de tipo string que se usa para iniciar el objeto
+	// Si "la_frase" tiene más caracteres que caben en el objeto, no se copia 
+	// nada y se crea un objeto vacío.
+	
+	Frase (string la_frase)
+	{		
+		total_utilizados = 0;
+		
+		if (la_frase.length() > 0) {
+
+			//Calcular el numero de palabras
+			int num_palabras = NumeroPalabrasEnString(la_frase);
+			
+			for (int k = 1; k <= num_palabras; k++) {
+				
+				Palabra palabra_k = GetPalabraDeString (la_frase, k); 
+				Aniade (palabra_k);
+			}
+		}
+	}
+
+	/***********************************************************************/
+	// Devuelve el número de casillas disponibles
+	
+	int Capacidad (void)
+	{
+		return (TAMANIO);
+	}
+	
+	/*****************************************************************/
+	// Devuelve cuántas palabras hay en la frase.
+
+	int NumeroPalabras (void) 
+	{
+		return (total_utilizados);
+	}
+	
+	/***********************************************************************/
+	// Añade una palabra (al final)
+	// Recibe: la_palabra, el carácter que se va a añadir
+	//
+	// PRE: total_utilizados < TAMANIO
+	// 		La adición se realiza si hay espacio para el nuevo elemento. 
+	// 		El nuevo elemento se coloca al final del vector. 
+	// 		Si no hay espacio, no se hace nada.	
+
+	void Aniade (Palabra la_palabra)
+	{
+		if (total_utilizados < TAMANIO) {
+			vector_privado_palabras[total_utilizados] = la_palabra;
+			total_utilizados++;
+		}
+	}
+	
+	/***********************************************************************/
+	// Eliminar la palabra que se encuentre en la posición dada por "indice".
+	// Realiza un borrado físico (con desplazamiento y sustitución).
+	//
+	// PRE: 0 <= indice < total_utilizados 
+	
+	void Elimina (int indice) 
+	{
+		// Recorremos de izquierda a derecha toda las componentes 
+		// que hay a la derecha de la posición a eliminar
+		//		Le asignamos a cada componente la que hay a su derecha
+
+		if ((indice >= 0) && (indice < total_utilizados)) {
+
+			int tope = total_utilizados-1; // posición del último 
+    
+			for (int i = indice ; i < tope ; i++)
+				vector_privado_palabras[i] = vector_privado_palabras[i+1];  
+    
+			total_utilizados--;    
+		}
+	}
+	
+	/***********************************************************************/
+	// Devuelve el carácter de la casilla "indice" 
+	// Recibe: indice, la posición del carácter que queremos obtener.
+	//
+	// PRE: 0 <= indice < total_utilizados
+
+	Palabra GetPalabra (int indice)
+	{
+		return (vector_privado_palabras[indice]);
+	}
+	
+	/***********************************************************************/
+	// Convierte una frase a un string y lo devuelve 
+	
+	string ToString (void)
+	{
+		string el_string;
+		
+		if (total_utilizados > 0)
+			el_string = (vector_privado_palabras[0]).ToString();
+		else 
+			el_string = "";
+		 
+		for (int i=1; i<total_utilizados; i++) {
+		
+			Palabra la_palabra_i = vector_privado_palabras[i];	
+			el_string = el_string + " " + la_palabra_i.ToString();
+		}
+	
+		return (el_string);
+	}
+
+	/***********************************************************************/
+	// Convierte una frase a un string y lo devuelve 
+	// Versión de prueba y depuración
+	
+	string ToString_Debug (void)
+	{
+		string el_string="*";
+		
+		if (total_utilizados > 0) {
+			
+			Palabra primera_palabra = vector_privado_palabras[0];
+			el_string = el_string + primera_palabra.ToString_Debug();
+
+			for (int i=1; i<total_utilizados; i++) {
+		
+				Palabra la_palabra_i = vector_privado_palabras[i];	
+				el_string = el_string + "*" + la_palabra_i.ToString_Debug();
+			}
+		}
+		
+		el_string = el_string + "*";
+			
+		return (el_string);
+	}
+
+	/***********************************************************************/
+	
+private: 
+
+	/***********************************************************************/
+	
+	int NumeroPalabrasEnString (string el_string) 
+	{
+		int num_palabras = 0; // Contador de palabras
+		
+		// Estamos en una palabra si el primer carácter NO es separador
+		bool en_palabra = !isspace(el_string.at(0));
+		if (en_palabra) num_palabras = 1; 
+	
+		int pos = 0; 		
+		int longitud_el_string = el_string.length();
+							
+		while (pos < longitud_el_string) {
+			
+			if (en_palabra) {
+				if (isspace(el_string.at(pos)))	
+					en_palabra = false; 
+			}
+			else {
+				if (!isspace(el_string.at(pos))) {	
+					en_palabra = true; 
+					num_palabras++;
+				}
+			}
+			
+			pos++; 
+		}
+		
+		return (num_palabras);	
+	}
+	
+	/***********************************************************************/
+	// Devuelva la "k"-ésima palabra de un string "str"
+	// Si hay menos de k palabras, devolverá la cadena vacía "".
+	// Recibe:  k, el número de la palabra a devolver
+	//			str, el string del que extrae la palabra
+	//
+	// PRE: 1 <= k <= NumeroPalabrasEnString()
+	// Si   k > NumeroPalabrasEnString() devuelve la cadena vacía
+
+	Palabra GetPalabraDeString (string str, int k) 
+	{
+		Palabra palabra_a_devolver; 
+				
+		//Calcular el numero de palabras
+		int num_palabras = NumeroPalabrasEnString (str);
+	
+	
+		if ((k >= 1) && (k <= num_palabras)) {
+
+			// Situarse al principio de la primera palabra 
+			// Estamos seguros de que al menos hay una. 
+			
+			int pos=0; 
+			while (isspace(str[pos]))  
+				pos++;
+	
+			int palabra = 1; 
+							
+			while (palabra < k) {
+				
+				// Saltar caracteres 
+				while (!isspace(str[pos])) 
+					pos++;
+				// Saltar espacios
+				while (isspace(str[pos])) 
+					pos++;
+				// Ya estamos al principio de otra palabra
+				palabra++;
+			}
+			
+			// Añadir, uno o a uno, los caracteres de la palabra 
+			// en el string "cadena_a_devolver"
+			
+			int longitud_str = str.length();
+		
+			while (!isspace(str[pos]) && (pos<longitud_str))  {
+				palabra_a_devolver.Aniade(str[pos]);
+				pos++;			
+			}
+		}
+		
+		return (palabra_a_devolver);
+	}
+	
+	/***********************************************************************/	
+};
+
+/////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////
+
+class Texto{
+private:
+	static const int TAMANIO = 100;
+	Frase Texto[TAMANIO];
+	int total_utilizados;
+public:
+	Texto(){
+		total_utilizados = 0;
+	}
+	
+	/***********************************************************************/
+	// Métodos de lectura (Get) de los datos individuales 
+
+	// Devuelve el número de casillas ocupadas
+	int TotalUtilizados (void)
+	{
+		return (total_utilizados);
+	}
+
+	// Devuelve el número de casillas disponibles
+	int Capacidad (void)
+	{
+		return (TAMANIO);
+	}
+
+	/***********************************************************************/
+	// Añade un elemento al vector.
+	// Recibe: nuevo, el elemento que se va a añadir.
+	//
+	// PRE: total_utilizados < TAMANIO
+	// 		La adición se realiza si hay espacio para el nuevo elemento. 
+	// 		El nuevo elemento se coloca al final del vector. 
+	// 		Si no hay espacio, no se hace nada.	
+
+	void Aniade (Frase nuevo)
+	{
+		if (total_utilizados < TAMANIO) {
+			texto[total_utilizados] = nuevo;
+			total_utilizados++;
+		}
+	}
+
+	/***********************************************************************/
+	// Devuelve el elemento de la casilla "indice" 
+	//
+	// PRE: 0 <= indice < total_utilizados 
+
+	char Elemento (int indice)
+	{
+		return texto[indice];
+	}
+
+	/***********************************************************************/
+	// "Limpia" completamente una secuencia
+	
+	void EliminaTodos (void) 
+	{
+		total_utilizados = 0;    
+	}
+
+};
+
+/***************************************************************************/
+
+int main (void){
+	Frase una_frase;
+
+	string palabra;
+
+
+	return (0);
+}
