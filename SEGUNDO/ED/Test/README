@@ -1,0 +1,56 @@
+
+/****************************************************/
+// GUIA DE USO DEL PROYECTO
+// 
+// PARA EJECUTAR EL PROJECTO SIMPLEMENTE ESCRIBA,
+// SITUADO DENTRO DE LA CARPETA DEL PROYECTO 
+// LA ORDEN make
+//
+// AL EJECUTAR ESTA ORDEN SERAN CREADOS LOS .o DE 
+// LOS FICHEROS FUENTE EN LA CARPETA /obj, 
+// EL EJECUTABLE EN LA CARPETA /bin Y TODA LA 
+// DOCUMENTACIÓN DEL PROYECTO TANTO EN HTML COMO EN
+// LATEX EN LA CARPETA /doc. 
+//
+// DESPUES DE ESTO EL PROGRAMA PASARA A EJECUTARSE
+// AUTOMÁTICAMENTE CON EL FICHERO DE ENTRADA Y EL DE 
+// SALIDA, SOLICITANDO EL NUMERO DE PREGUNTAS.
+//
+//----------------------------------------------------
+//
+// COMANDOS DEL MAKE:
+// 
+// make: Ejecución de todo el proyecto.
+//
+// make clean: Limpieza del proyecto.
+//
+// make exe: Ejecuta el proyecto.
+//
+// make latex: Compila el pdf.
+//
+// make open: Abre el pdf.
+//
+// make zip: Crea un comprimido de todo el proyecto.
+//
+//------------------------------------------------------
+//
+// AL SER EJECUTADO EL PROYECTO ÚNICAMENTE CON LA ORDEN 
+// make EL PDF DEL EXAEMEN SERA LANZADO AUTOMÁTICAMENTE.
+//
+//
+// LA SALIDA DEL PROYECTO NO ES UN ARCHIVO DE TEXTO PLANO
+// SI NO EN UN ARCHIVO .tex QUE SERÁ COMPILADO CON LATEX
+// PARA CREAR EL PDF.
+//
+//
+//
+//******************************************************/
+// NOTA: SI POR ALGÚN COMANDO NO PERMITIDO POR EL 
+// 		 COMPILADOR DE LATEX , EL PDF NO SE PUDIERA
+//		 GENERAR, PRESIONE INTRO Y VUELVA A GENERAR 
+//		 EL EXAMEN MEDIANTE EL COMANDO make, O LOS 
+//		 3 COMANDOS DE EJECUCION, COMPILACION, Y 
+//		 APERTURA QUE SE MUESTRAN EN LOS COMANDOS
+//		 DEL MAKE.
+//******************************************************/
+/*******************************************************/

@@ -1,0 +1,7 @@
+pelo:pelirrojo
+ojos:oscuros
+piel:clara
+gafas:si
+bigote:no
+barba:no
+genero:mujer

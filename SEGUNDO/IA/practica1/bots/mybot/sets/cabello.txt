@@ -1,0 +1,7 @@
+rubio 
+moreno 
+marron 
+calvo 
+pelirrojo 
+blanco 
+negro

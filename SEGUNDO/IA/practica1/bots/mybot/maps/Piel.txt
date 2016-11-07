@@ -1,0 +1,2 @@
+clara:¿Tiene la piel Clara?
+oscura:¿Tiene la piel Oscura?

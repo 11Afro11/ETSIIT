@@ -1,0 +1,7 @@
+pelo:calvo
+ojos:claros
+piel:clara
+gafas:no
+bigote:no
+barba:no
+genero:hombre

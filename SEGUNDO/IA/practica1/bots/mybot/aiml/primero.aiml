@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+<!-- SALUDOS -->
+
+<category>
+<pattern>^ hola ^</pattern>
+<template>
+	<random>
+		<li>Hola</li>
+		<li>Hola, que tal?</li>
+		<li>Buenas</li>
+		<li>Buenas, en que puedo ayudarte?</li>
+	</random>
+</template>
+</category>
+
+<category>
+<pattern>que tal</pattern>
+<template>Estoy genial!!!!</template>
+</category>
+
+<category>
+<pattern>^ que tal ^</pattern>
+<template><srai>QUE tal</srai></template>
+</category>
+
+<category>
+<pattern>^ como estas ^</pattern>
+<template><srai>QUE tal</srai></template>
+</category>
+
+
+<!-- FIN SALUDOS -->
+
+<!-- NOMBRE -->
+
+<category>
+<pattern> ^ me llamo *</pattern>
+<template>
+	<think><set name="nombre"><star index="2"/></set></think>
+	<get name="nombre"/> es un bonito nombre.
+</template>
+</category>
+
+<category>
+<pattern>Cual es mi nombre</pattern>
+<template>
+	<condition name="nombre">
+		<li value="unknown">Aun no me has dicho tu nombre</li>
+		<li>Tu nombre es <get name="nombre"/></li>
+	</condition>
+</template>
+</category>
+
+<category>
+<pattern>* mi nombre</pattern>
+<template><srai>CUAL ES MI NOMBRE</srai></template>
+</category>
+
+
+<category>
+<pattern>^ como me llamo</pattern>
+<template><srai>CUAL ES MI NOMBRE</srai></template>
+</category>
+
+<!-- FIN NOMBRE -->
+
+<!-- INFO PERSONAL -->
+
+	<!-- COLOR -->
+
+<category>
+<pattern>mi color favorito es el *</pattern>
+<template>
+	<think><set name="color"><star/></set></think>
+	<get name="color"/> es un bonito color.
+</template>
+</category>
+
+<category>
+<pattern>^ color favorito</pattern>
+<template>Tu color favorito es <get name="color"/></template>
+</category>
+
+	<!-- FIN COLOR -->
+
+	<!-- CAFE -->
+<!-- <category>
+	<pattern>^ cafe ^</pattern>
+	<template>
+		Te gusta el cafe
+	</template>
+</category>
+
+
+<category>
+	<pattern>Si</pattern>
+	<that>TE GUSTA EL CAFE</that>
+	<template>
+		Lo prefieres solo o con leche
+	</template>
+</category> -->
+
+	<!-- FIN CAFE -->
+<!-- FIN INFO PERSONAL -->
+
+<!-- INFO BOT -->
+<category>
+<pattern>Cual es tu edad</pattern>
+<template>Tengo <bot name="age"/></template>
+</category>
+
+
+<category>
+<pattern>Como te llamas</pattern>
+<template>Mi nombre es <bot name="name"/></template>
+</category>
+
+<!-- FIN INFO BOT -->
+
+
+<!-- PREGUNTAS Y RESPUESTAS -->
+
+<category>
+<pattern>Es <set>color</set> un color</pattern>
+<template>Si, <star/> es un color</template>
+</category>
+
+
+<category>
+<pattern>Es * un color</pattern>
+<template>No, <star/> no es un color</template>
+</category>
+
+
+<category>
+	<pattern>Cual es la capital de <set>pais</set></pattern>
+	<template>
+		La capital de <star/> es <map name="capital"><star/></map>
+	</template>
+</category>
+
+
+<category>
+	<pattern>Cual es la capital de *</pattern>
+	<template>
+		No lo se
+	</template>
+</category>
+
+
+<category>
+<pattern>la capital de * es *</pattern>
+<template>
+	<think>
+		<set var="cap"><srai>CUAL ES LA CAPITAL DE <star/></srai></set>
+	</think>
+	<condition var="cap">
+		<li value="NO LO SE">
+		<learn>
+			<category>
+			<pattern>
+				CUAL ES LA CAPITAL DE <eval><star/></eval>
+			</pattern>
+			<template>
+				La capital de <eval><star/></eval> es <eval><star index="2"/></eval>
+			</template>
+			</category>
+		</learn>
+		Recordare que la capital de <star/> es <star index="2"/>
+		</li>
+		<li>
+		Ya lo sabia
+		</li>
+	</condition>
+</template>
+</category>
+
+<!-- <category>
+<pattern>la capital de * es *</pattern>
+<template>
+	<think>
+		<set var="cap"><srai>CUAL ES LA CAPITAL DE <star/></srai></set>
+	</think>
+	<condition var="cap">
+		<li value="NO LO SE">
+		<learn>
+			<category>
+			<pattern>
+				CUAL ES LA CAPITAL DE <eval><star/></eval>
+			</pattern>
+			<template>
+				La capital de <eval><star/></eval> es <eval><star index="2"/></eval>
+			</template>
+			</category>
+		</learn>
+		Recordare que la capital de <star/> es <star index="2"/>
+		</li>
+		<li>
+			<set var="pais"><srai>SELECITEM 4 IN <get var="cap"/></srai></set>
+
+			<set var="correcta"><srai><map name="capital"><get var="pais"/></map></srai></set>
+
+			<set var="capi"><srai>SELECITEM 6 IN <get var="cap"/></srai></set>
+
+			<condition var="capi">
+				<li value="correcta">
+					Ya lo sabia
+				</li>
+
+				<li>
+					Eso no es correcto
+				</li>
+			</condition>
+		</li>
+	</condition>
+</template>
+</category> -->
+
+
+
+
+<!-- FIN PREGUNTAS Y RESPUESTAS -->
+
+<!-- CICLOS -->
+<category>
+	<pattern>Cuenta hasta <set>number</set></pattern>
+	<template>
+		<think>
+			<set var="contador">1</set>
+			<set var="salida">1</set>
+		</think>
+		<condition var="contador">
+			<li><value><star/></value><get var="salida"/></li>
+			<li>
+				<think>
+					<set var="contador">
+						<map name="successor"><get var="contador"/></map>
+					</set>
+					<set var="salida"><get var="salida"/><get var="contador"/></set>
+				</think>
+				<loop/>
+			</li>
+		</condition>
+	</template>
+</category>
+
+</aiml>

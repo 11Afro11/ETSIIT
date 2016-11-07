@@ -1,0 +1,2 @@
+claros:¿Es Claro su color de ojos?
+oscuros:¿Es Oscuro su color de ojos?

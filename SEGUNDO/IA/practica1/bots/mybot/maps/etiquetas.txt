@@ -1,0 +1,15 @@
+Barba:¿Tiene barba?
+Bigote:¿Tiene bigote?
+Pelo:¿Es calvo?
+Ojos:¿Es Claro su color de ojos?
+Ojos:¿Es Oscuro su color de ojos?
+Pelo:¿Tiene el pelo Negro?
+Pelo:¿Tiene el pelo Rubio?
+Pelo:¿Tiene el pelo Blanco?
+Pelo:¿Tiene el pelo Pelirrojo?
+Pelo:¿Tiene el pelo Marron?
+Piel:¿Tiene la piel Clara?
+Piel:¿Tiene la piel Oscura?
+Gafas:¿Tiene gafas?
+Genero:¿Es Mujer?
+Genero:¿Es Hombre?

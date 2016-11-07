@@ -1,0 +1,7 @@
+negro:¿Tiene el pelo Negro?
+rubio:¿Tiene el pelo Rubio?
+blenco:¿Tiene el pelo Blanco?
+pelirrojo:¿Tiene el pelo Pelirrojo?
+marron:¿Tiene el pelo Marron?
+moreno:¿Tiene el pelo Moreno?
+calvo:¿Es calvo?

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+<!-- PREGUNTAS Y RESPUESTAS -->
+
+<category>
+<pattern>Es <set>compi</set> un companiero mio</pattern>
+<template>Si, <star/> es tu amiguito</template>
+</category>
+
+
+<category>
+<pattern>Es * un companiero mio</pattern>
+<template>No, <star/> no no lo conoces</template>
+</category>
+
+
+<category>
+<pattern>Es David un companiero mio</pattern>
+<template>No, lo odias a muerte</template>
+</category>
+
+<category>
+	<pattern>De que color tiene <set>compi</set> el pelo</pattern>
+	<template>
+		<star/> tiene el pelo <map name="pelo"><star/></map>
+	</template>
+</category>
+
+
+<category>
+	<pattern>De que color tiene <set>compi</set> los ojos</pattern>
+	<template>
+		<star/> tiene los ojos <map name="ojos"><star/></map>
+	</template>
+</category>
+
+
+<!-- <set name="ojos">oscuros claros oscuros oscuros claros</set> -->
+
+<category>
+	<pattern>Cuantos amigos tienen los ojos <set>colorojos</set></pattern>
+	<template>
+		<think>
+			<set var="contador">1</set>
+			<set var="salida"></set>
+		</think>
+		<condition var="contador">
+			<li><value>6</value><get var="salida"/></li>
+			<li>
+				<think>
+					<set var="tipo">
+						<map name="companiero"> <get var="contador"/></map>
+					</set>
+
+					<set var="aux">
+						<map name="ojos"> <get var="tipo"/></map></set>
+
+					<condition var="aux">
+						<li> <value><star/></value><set var="salida"><get var="salida"/> <get var="tipo"/></set>
+					
+				</li>
+			</condition>
+			<set var="contador">
+						<map name="successor"><get var="contador"/></map>
+					</set>
+				</think>
+				<loop/>
+			</li>
+		</condition>
+	</template>
+</category>
+
+
+<category>
+	<pattern>Cuantos amigos tienen el pelo <set>colorpelo</set></pattern>
+	<template>
+		<think>
+			<set var="contador">1</set>
+			<set var="salida"></set>
+		</think>
+		<condition var="contador">
+			<li><value>6</value><get var="salida"/></li>
+			<li>
+				<think>
+					<set var="tipo">
+						<map name="companiero"> <get var="contador"/></map>
+					</set>
+
+					<set var="aux">
+						<map name="pelo"> <get var="tipo"/></map></set>
+
+					<condition var="aux">
+						<li> <value><star/></value><set var="salida"><get var="salida"/> <get var="tipo"/></set>
+					
+				</li>
+			</condition>
+			<set var="contador">
+						<map name="successor"><get var="contador"/></map>
+					</set>
+				</think>
+				<loop/>
+			</li>
+		</condition>
+	</template>
+</category>
+
+<!-- FIN PREGUNTAS Y RESPUESTAS -->
+
+</aiml>

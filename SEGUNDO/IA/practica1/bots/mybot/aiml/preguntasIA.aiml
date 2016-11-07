@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+<!-- Pregunta 1 -->
+<category>
+<pattern>como apruebo IA</pattern>
+<template>aprobando la teoria y las practicas</template>
+</category>
+
+<category>
+<pattern>^ <set>aprobar</set> ^ <set>asignatura</set> ^</pattern>
+<template><srai>COMO APRUEBO IA</srai></template>
+</category>
+
+<!-- Pregunta 2 -->
+
+<category>
+<pattern>Como hago para aprobar la teoria</pattern>
+<template>Aprobando el examen final con los 3 parciales de apoyo</template>
+</category>
+
+
+<category>
+<pattern>^ <set>aprobar</set> ^ <set>teoria</set> ^</pattern>
+<template><srai>COMO HAGO PARA APROBAR LA TEORIA</srai></template>
+</category>
+
+<!-- Pregunta 3 -->
+
+<category>
+<pattern>Como consigo superar la parte practica</pattern>
+<template>Sacando una media de aprobado en las practicas o que las practicas realizadas den para aprobar</template>
+</category>
+
+
+
+<category>
+<pattern>^ <set>aprobar</set> ^ <set>practica</set> ^</pattern>
+<template><srai>COMO CONSIGO SUPERAR LA PARTE PRACTICA</srai></template>
+</category>
+
+<!-- Pregunta 4 -->
+
+<category>
+<pattern>Como se evalua en la convocatoria de Junio</pattern>
+<template>Con la media de practicas y de teoria</template>
+</category>
+
+
+<category>
+<pattern>^ <set>evaluar</set> ^ convocatoria * junio ^</pattern>
+<template><srai>COMO SE EVALUA EN LA CONVOCATORIA DE JUNIO</srai></template>
+</category>
+
+<!-- Pregunta 5 -->
+
+<category>
+<pattern>Que pasa si tengo que presentarme en la convocatoria de septiembre</pattern>
+<template>No se guardan las practicas y tendras que examinarte de teoría y practicas</template>
+</category>
+
+<category>
+<pattern>^ <set>presentar</set> * septiembre ^</pattern>
+<template><srai>QUE PASA SI TENGO QUE PRESENTARME EN LA CONVOCATORIA DE SEPTIEMBRE</srai></template>
+</category>
+
+<!-- Pregunta 6 -->
+
+<category>
+<pattern>Hay examen de practicas en la convocatoria de septiembre</pattern>
+<template>Si</template>
+</category>
+
+<category>
+<pattern>^ <set>practica</set> * septiembre ^</pattern>
+<template><srai>HAY EXAMEN DE PRACTICAS EN LA CONVOCATORIA DE SEPTIEMBRE</srai></template>
+</category>
+
+<!-- Pregunta 7 -->
+
+<category>
+<pattern>Que pasa si no puedo asistir a clase regularmente</pattern>
+<template>Puedes solicitar la evaluacion unica final</template>
+</category>
+
+<category>
+<pattern>^ no ^ <set>asistir</set> ^ clase ^</pattern>
+<template><srai>QUE PASA SI NO PUEDO ASISTIR A CLASE REGULARMENTE</srai></template>
+</category>
+
+<!-- Pregunta 8 -->
+
+<category>
+<pattern>Hay nota minima para aprobar</pattern>
+<template>Un 3</template>
+</category>
+
+<category>
+<pattern>^ <set>nota</set> ^ <set>aprobar</set> ^</pattern>
+<template><srai>HAY NOTA MINIMA PARA APROBAR</srai></template>
+</category>
+
+<!-- Pregunta 9 -->
+
+<category>
+<pattern>Las practicas son obligatorias</pattern>
+<template>Depende</template>
+</category>
+
+<category>
+<pattern>^ practicas ^ obligatorias ^</pattern>
+<template><srai>LAS PRACTICAS SON OBLIGATORIAS</srai></template>
+</category>
+
+<category>
+	<pattern>de que depende</pattern>
+	<that>DEPENDE</that>
+	<template>
+		De si quieres aprobar o no
+	</template>
+</category>
+
+<category>
+<pattern>^ de ^ que ^</pattern>
+<template><srai>DE QUE DEPENDE</srai></template>
+</category>
+
+<!-- Pregunta 10 -->
+
+<category>
+<pattern>Cuanto vale cada practica con respecto a la nota final</pattern>
+<template>un 25%</template>
+</category>
+
+<category>
+<pattern>^ <set>practica</set> ^ <set>nota</set> ^</pattern>
+<template><srai>CUANTO VALE CADA PRACTICA CON RESPECTO A LA NOTA FINAL</srai></template>
+</category>
+
+<!-- Pregunta 11 -->
+
+<category>
+<pattern>Cuanto vale la participacion con respecto a la nota final</pattern>
+<template>1%</template>
+</category>
+
+<category>
+<pattern>^ <set>participar</set> ^ <set>nota</set> ^</pattern>
+<template><srai>CUANTO VALE LA PARTICIPACION CON RESPECTO A LA NOTA FINAL</srai></template>
+</category>
+
+<!-- Pregunta 12 -->
+
+<category>
+<pattern>Cuanto vale cada guion de practicas con respecto a la nota final</pattern>
+<template>un 0'25</template>
+</category>
+
+<category>
+<pattern>^ guion ^ <set>practica</set> ^</pattern>
+<template><srai>CUANTO VALE CADA GUION DE PRACTICAS CON RESPECTO A LA NOTA FINAL</srai></template>
+</category>
+
+<!-- Pregunta 13 -->
+
+<category>
+<pattern>Como se consiguen puntos por participacion</pattern>
+<template>Participando en clase para resolver los ejercicios</template>
+</category>
+
+<category>
+<pattern>^ puntos ^ <set>participar</set> ^</pattern>
+<template><srai>COMO SE CONSIGUEN PUNTOS POR PARTICIPACION</srai></template>
+</category>
+
+<!-- Pregunta 14 -->
+
+<category>
+<pattern>Que es lo minimo que necesito para aprobar la asignatura</pattern>
+<template>Un 3 en alguna de las partes de teoria o practicas</template>
+</category>
+
+
+<category>
+<pattern>^ minimo ^ <set>aprobar</set> ^</pattern>
+<template><srai>QUE ES LO MINIMO QUE NECESITO PARA APROBAR LA ASIGNATURA</srai></template>
+</category>
+
+<!-- Pregunta 15 -->
+
+<category>
+<pattern>Los trabajos son individuales</pattern>
+<template>ESTRICTAMENTE INDIVIDUALES</template>
+</category>
+
+<category>
+<pattern>^ <set>individual</set> ^</pattern>
+<template><srai>LOS TRABAJOS SON INDIVIDUALES</srai></template>
+</category>
+
+<!-- Pregunta 16 -->
+
+<category>
+<pattern>Se pueden hacer los trabajos en grupo</pattern>
+<template>Si, pero la nota final quedará dividida por el numero de miembros del grupo y se le restaran 4 puntos.</template>
+</category>
+
+
+<category>
+<pattern>^ <set>grupo</set> ^</pattern>
+<template><srai>SE PUEDEN HACER LOS TRABAJOS EN GRUPO</srai></template>
+</category>
+
+<!-- Pregunta 17 -->
+
+<category>
+<pattern>Hay que entregar los ejercicios de las relaciones de problemas</pattern>
+<template>No</template>
+</category>
+
+<category>
+<pattern>^ <set>ejercicios</set> ^</pattern>
+<template><srai>HAY QUE ENTREGAR LOS EJERCICIOS DE LAS RELACIONES DE PROBLEMAS</srai></template>
+</category>
+
+<!-- Pregunta 18 -->
+
+<category>
+<pattern>Porque tengo que estudiar</pattern>
+<template>Para que tu inteligencia sea real y no artificial</template>
+</category>
+
+<category>
+<pattern>^ <set>estudiar</set> ^</pattern>
+<template><srai>PORQUE TENGO QUE ESTUDIAR</srai></template>
+</category>
+
+<!-- Pregunta 19 -->
+
+<category>
+<pattern>cuanto vale el primer examen de teoria</pattern>
+<template>0,5</template>
+</category>
+
+
+<category>
+<pattern>^ <set>primer</set> ^ teoria ^</pattern>
+<template><srai>CUANTO VALE EL PRIMER EXAMEN DE TEORIA</srai></template>
+</category>
+
+<!-- Pregunta 20 -->
+
+<category>
+<pattern>Puedo tener nota mayor a 10</pattern>
+<template>NO</template>
+</category>
+
+<category>
+<pattern>^ <set>nota</set> ^ 10 ^</pattern>
+<template><srai>Puedo tener nota mayor a 10</srai></template>
+</category>
+
+<!-- Pregunta 21 -->
+
+<category>
+<pattern>Puedo recuperar una practica o examen</pattern>
+<template>NO, asi que procura no perderlos</template>
+</category>
+
+<category>
+<pattern>^ <set>recuperar</set> ^</pattern>
+<template><srai>PUEDO RECUPERAR UNA PRACTICA O EXAMEN</srai></template>
+</category>
+
+<!-- Pregunta 22 -->
+
+<category>
+<pattern>Que pasa si me copio de otro estudiante</pattern>
+<template>Se creara un agujero espacio-temporal y apareceras en septiembre</template>
+</category>
+
+<category>
+<pattern>^ <set>copio</set> ^</pattern>
+<template><srai>QUE PASA SI ME COPIO DE OTRO ESTUDIANTE</srai></template>
+</category>
+
+<!-- Pregunta 23 -->
+
+<category>
+<pattern>Que pasa si me dejo copiar de otro estudiante</pattern>
+<template>Ese alumno y tu sereis arrastrados por un agujero espacio-temporal y aparecereis en septiembre</template>
+</category>
+
+<category>
+<pattern>^ dejo ^ <set>copio</set> ^</pattern>
+<template><srai>QUE PASA SI ME DEJO COPIAR DE OTRO ESTUDIANTE</srai></template>
+</category>
+
+<!-- Pregunta 24 -->
+
+<category>
+<pattern>Y si suspendo la convocatoria de junio</pattern>
+<template>Te queda la de septiembre</template>
+</category>
+
+<category>
+<pattern>^ <set>suspender</set> ^ junio ^</pattern>
+<template><srai>Y SI SUSPENDO LA CONVOCATORIA DE JUNIO</srai></template>
+</category>
+
+<!-- Pregunta 25 -->
+
+<category>
+<pattern>Cuanto vale la practica y la teoria</pattern>
+<template>50% ambas</template>
+</category>
+
+<category>
+<pattern>^ <set>practica</set> ^ <set>teoria</set> ^</pattern>
+<template><srai>CUANTO VALE LA PRACTICA Y LA TEORIA</srai></template>
+</category>
+
+<!-- Pregunta 26 -->
+
+<category>
+<pattern>Cual es el horario de tutorias del profesor de practicas</pattern>
+<template>Lunes 10:00 a 13:30, Martes 10:00 a 11:00 y Miercoles 17:00 a 18:00</template>
+</category>
+
+<category>
+<pattern>^ <set>horario</set> ^ <set>practica</set> ^</pattern>
+<template><srai>CUAL ES EL HORARIO DE TUTORIAS DEL PROFESOR DE PRACTICAS</srai></template>
+</category>
+
+<!-- Pregunta 27 -->
+
+<category>
+<pattern>Cual es el correo electronico del profesor de teoria</pattern>
+<template>faro@decsai.ugr.es</template>
+</category>
+
+<category>
+<pattern>^ correo ^ <set>teoria</set> ^</pattern>
+<template><srai>CUAL ES EL CORREO ELECTRONICO DEL PROFESOR DE TEORIA</srai></template>
+</category>
+
+<!-- Pregunta 28 -->
+
+<category>
+<pattern>Se puede aprobar la parte practica de la asignatura si no presento una practica</pattern>
+<template>Si, si la media de las demas da para aprobar</template>
+</category>
+
+<category>
+<pattern>^ <set>aprobar</set> ^ <set>falta</set> ^ <set>practica</set> ^</pattern>
+<template><srai>SE PUEDE APROBAR LA PARTE PRACTICA DE LA ASIGNATURA SI NO PRESENTO UNA PRACTICA</srai></template>
+</category>
+
+<!-- Pregunta 29 -->
+
+<category>
+<pattern>Cual es la nota minima que tengo que obtener en cada parte para hacer media</pattern>
+<template> 3 puntos</template>
+</category>
+
+<category>
+<pattern>^ <set>nota</set> ^ <set>minimo</set> ^</pattern>
+<template><srai>CUAL ES LA NOTA MINIMA QUE TENGO QUE OBTENER EN CADA PARTE PARA HACER MEDIA</srai></template>
+</category>
+
+<!-- Pregunta 30 -->
+
+<category>
+<pattern>Que puntuacion obtengo en la practica 1 si opto por defender el nivel 3 y no lo supero</pattern>
+<template>un 6</template>
+</category>
+
+<category>
+<pattern>^ <set>nota</set> ^ 3 ^</pattern>
+<template><srai>QUE PUNTUACION OBTENGO EN LA PRACTICA 1 SI OPTO POR DEFENDER EL NIVEL 3 Y NO LO SUPERO</srai></template>
+</category>
+
+<!-- Pregunta 31 -->
+
+<category>
+<pattern>Puedo entregar la practica 1 sin hacer la tarea relativa al nivel 0</pattern>
+<template>No puedes, la practica se puntuara con un 0</template>
+</category>
+
+<category>
+<pattern>^ <set>practica</set> ^ 0 ^</pattern>
+<template><srai>PUEDO ENTREGAR LA PRACTICA 1 SIN HACER LA TAREA RELATIVA AL NIVEL 0</srai></template>
+</category>
+
+<!-- Pregunta 32 -->
+
+<category>
+<pattern>Que tengo que hacer si no puedo asistir a la sesion de practicas en la que me corresponde hacer la defensa de la practica 1</pattern>
+<template>Avisar al profesor de practicas para ir otro dia</template>
+</category>
+
+<category>
+<pattern>^ no ^ <set>asistir</set> ^ <set>defensa</set> ^</pattern>
+<template><srai>Que tengo que hacer si no puedo asistir a la sesion de practicas en la que me corresponde hacer la defensa de la practica 1</srai></template>
+</category>
+
+<!-- Pregunta 33 -->
+
+<category>
+<pattern>Cuantas pruebas teoricas tendre a lo largo del curso</pattern>
+<template>4 Pruebas</template>
+</category>
+
+<category>
+<pattern>^ <set>examen</set> ^ <set>teoria</set> ^</pattern>
+<template><srai>Cuantas pruebas teoricas tendre a lo largo del curso</srai></template>
+</category>
+
+<!-- Pregunta 34 -->
+
+<category>
+<pattern>Que vale la primera prueba teorica</pattern>
+<template>0'5</template>
+</category>
+
+<category>
+<pattern>^ <set>nota</set> ^ <set>examen</set> ^</pattern>
+<template><srai>Que vale la primera prueba teorica</srai></template>
+</category>
+
+<!-- Pregunta 35 -->
+
+<category>
+<pattern>En la parte teorica se tiene en cuenta la asistencia</pattern>
+<template>No</template>
+</category>
+
+<category>
+<pattern>^ <set>asistencia</set> ^</pattern>
+<template><srai>En la parte teorica se tiene en cuenta la asistencia</srai></template>
+</category>
+
+<!-- Pregunta 36 -->
+
+<category>
+<pattern>En que consiste el examen de ejercicios</pattern>
+<template>En un examen de problemas relacionados con la IA</template>
+</category>
+
+<category>
+<pattern>^ examen * <set>ejercicios</set> ^</pattern>
+<template><srai>En que consiste el examen de ejercicios</srai></template>
+</category>
+
+<!-- Pregunta 37 -->
+
+<category>
+<pattern>Que ocurre si no quiero defender una practica</pattern>
+<template>Tu practica quedará desprotegida y presa de las malas notas, se convertira en un 0</template>
+</category>
+
+<category>
+<pattern>^ no ^ <set>defensa</set> ^</pattern>
+<template><srai>Que ocurre si no quiero defender una practica</srai></template>
+</category>
+
+<!-- Pregunta 38 -->
+
+<category>
+<pattern>Que debería hacer si no estoy seguro de poder superar el nivel 3 de la practica 1</pattern>
+<template>Presentarte al nivel 2</template>
+</category>
+
+<category>
+<pattern>^ <set>aprobar</set> ^ 3 ^</pattern>
+<template><srai>Que debería hacer si no estoy seguro de poder superar el nivel 3 de la practica 1</srai></template>
+</category>
+
+<!-- Pregunta 39 -->
+
+<category>
+<pattern>Cuantas practicas entregables tiene la asignatura</pattern>
+<template>4 Practicas</template>
+</category>
+
+<category>
+<pattern>^ <set>practica</set> ^ <set>asignatura</set> ^</pattern>
+<template><srai>Cuantas practicas entregables tiene la asignatura</srai></template>
+</category>
+
+<!-- Pregunta 40 -->
+
+<category>
+<pattern>Yo programo muy bien en C++ podria hacer las practicas en ese lenguaje</pattern>
+<template>No, te toca hacerlo en AIML</template>
+</category>
+
+<category>
+<pattern>^ c++ ^</pattern>
+<template><srai>Yo programo muy bien en C++ podria hacer las practicas en ese lenguaje</srai></template>
+</category>
+
+
+<!-- Pregunta 41 -->
+
+<category>
+<pattern>Odio aiml podria hacer las practicas en otro lenguaje</pattern>
+<template>No, dale una oportinidad, te gustará...no te queda otra</template>
+</category>
+
+<category>
+<pattern>^ aiml ^</pattern>
+<template><srai>Odio aiml podria hacer las practicas en otro lenguaje</srai></template>
+</category>
+
+<!-- Pregunta 42 -->
+
+<category>
+<pattern>Donde esta la oficina del profesor de practicas</pattern>
+<template>En el despacho 23 de la planta de decsai</template>
+</category>
+
+<category>
+<pattern>^ <set>oficina</set> ^ <set>practica</set> ^</pattern>
+<template><srai>Donde esta la oficina del profesor de practicas</srai></template>
+</category>
+
+<!-- Pregunta 43 -->
+
+<category>
+<pattern>Donde esta el despacho del profesor de teoria</pattern>
+<template>En el despacho 24 de la planta de decsai</template>
+</category>
+
+<category>
+<pattern>^ <set>oficina</set> ^ <set>teoria</set> ^</pattern>
+<template><srai>Donde esta el despacho del profesor de teoria</srai></template>
+</category>
+
+<!-- Pregunta 44 -->
+
+<category>
+<pattern>Sumo 15 puntos en las practicas que ya he hecho eso me asegura aprobar las practicas</pattern>
+<template>Si, con eso se puede aprobar las practicas</template>
+</category>
+
+<category>
+<pattern>^ 15 ^ <set>nota</set> ^ <set>aprobar</set> ^ <set>practica</set> ^</pattern>
+<template><srai>Sumo 15 puntos en las practicas que ya he hecho eso me asegura aprobar las practicas</srai></template>
+</category>
+
+<!-- Pregunta 45 -->
+
+<category>
+<pattern>Sumo 20 puntos en las practicas que ya he hecho eso me asegura aprobar la asignatura</pattern>
+<template>No, con eso no puedes aprobar</template>
+</category>
+
+<category>
+<pattern>^ 20 ^ <set>nota</set> ^ <set>aprobar</set> ^ <set>asignatura</set> ^</pattern>
+<template><srai>Sumo 20 puntos en las practicas que ya he hecho eso me asegura aprobar la asignatura</srai></template>
+</category>
+
+<!-- Pregunta 46 -->
+
+<category>
+<pattern>Me incorpore tarde a la asignatura y no pude hacer la practica 1 puedo recuperar esa practica</pattern>
+<template>NO</template>
+</category>
+
+<category>
+<pattern>^ tarde ^ <set>asignatura</set> ^ <set>recuperar</set> ^</pattern>
+<template><srai>Me incorpore tarde a la asignatura y no pude hacer la practica 1 puedo recuperar esa practica</srai></template>
+</category>
+
+<!-- Pregunta 47 -->
+
+<category>
+<pattern>Me incorpore tarde a la asignatura y no pude hacer la practica 1 tengo posibilidades de aprobar la parte practica</pattern>
+<template>Claro, aprobando las demas</template>
+</category>
+
+<category>
+<pattern>^ tarde ^ <set>asignatura</set> ^ <set>aprobar</set> ^</pattern>
+<template><srai>Me incorpore tarde a la asignatura y no pude hacer la practica 1 tengo posibilidades de aprobar la parte practica</srai></template>
+</category>
+
+<!-- Pregunta 48 -->
+
+<category>
+<pattern>Me encantan los agentes conversacionales y soy un experto en su constuccion podria usar agentes conversacionales para que vayan en mi lugar a hacer la defensa de practicas</pattern>
+<template>Si tu agente conversacional viene andando cuando lo llamen y responda como para pasar el test de turing si, en caso contrario no</template>
+</category>
+
+
+<category>
+<pattern>^ <set>conversa</set> ^</pattern>
+<template><srai>Me encantan los agentes conversacionales y soy un experto en su constuccion podria usar agentes conversacionales para que vayan en mi lugar a hacer la defensa de practicas</srai></template>
+</category>
+
+<!-- Pregunta 49 -->
+
+<category>
+<pattern>En las siguientes practicas hay tambien que programar</pattern>
+<template>Pues claro, somos informaticos</template>
+</category>
+
+<category>
+<pattern>^ <set>programar</set> ^</pattern>
+<template><srai>En las siguientes practicas hay tambien que programar</srai></template>
+</category>
+
+<!-- Pregunta 50 -->
+
+<category>
+<pattern>El nivel 0 es muy facil el resto de la practica se complica mucho</pattern>
+<template>No si trabajas.</template>
+</category>
+
+
+<category>
+<pattern>^ <set>facil</set> ^ <set>dificil</set> ^</pattern>
+<template><srai>El nivel 0 es muy facil el resto de la practica se complica mucho</srai></template>
+</category>
+
+
+</aiml>

@@ -1,0 +1,7 @@
+pelo:rubio
+ojos:claros
+piel:clara
+gafas:no
+bigote:si
+barba:no
+genero:hombre

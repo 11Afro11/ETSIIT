@@ -1,0 +1,17 @@
+¿Tiene barba?
+¿Tiene bigote?
+¿Es calvo?
+¿Es Claro su color de ojos?
+¿Es Oscuro su color de ojos?
+¿Tiene el pelo Negro?
+¿Tiene el pelo Rubio?
+¿Tiene el pelo Blanco?
+¿Tiene el pelo Pelirrojo?
+¿Tiene el pelo Marron?
+¿Tiene la piel Clara?
+¿Tiene la piel Oscura?
+¿Tiene gafas?
+¿Es Mujer?
+¿Es Hombre?
+¿Es Largo su pelo?
+¿Es Corto su pelo?

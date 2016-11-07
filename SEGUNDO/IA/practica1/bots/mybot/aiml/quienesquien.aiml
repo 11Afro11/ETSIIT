@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+
+<category>
+	<pattern>^ jugar ^</pattern>
+	<template>
+		Quieres jugar al quien es quien
+	</template>
+</category>
+
+
+<category>
+	<pattern>Si</pattern>
+	<that>QUIERES JUGAR AL QUIEN ES QUIEN</that>
+	<template>
+		Piensas un personaje o lo pienso yo
+	</template>
+</category>
+
+<category>
+	<pattern>^ yo ^</pattern>
+	<that>PIENSAS UN PERSONAJE O LO PIENSO YO</that>
+	<template>
+		<think>
+			<set name="sino">YES</set>
+			<set name="trampa">end</set>
+			<set name="personajes">Alejandro Alfonso Antonio Cristina Gabriela Ivan Javier Juan Laura Luis Marco Maria Paco Pepe Sofia Sonia</set>		
+
+			<set name="Pelo">rubio moreno marron calvo pelirrojo blanco negro</set>
+			<set name="Ojos">claros oscuros</set>
+			<set name="Gafas">si no</set>
+			<set name="Bigote">si no</set>
+			<set name="Barba">si no</set>
+			<set name="Genero">hombre mujer</set>
+			<set name="Piel">clara oscura</set>
+
+			<set name="ask">Genero Ojos Gafas Piel Pelo Bigote Barba</set>
+		</think>
+		<srai>HACER PREGUNTA</srai>
+	</template>
+</category>
+
+
+
+<category>
+	<pattern>^ tu ^</pattern>
+	<that>PIENSAS UN PERSONAJE O LO PIENSO YO</that>
+	<template>
+		Ya he pensado en uno.
+		<think>
+		<set name="personajes">Alejandro Alfonso Antonio Cristina Gabriela Ivan Javier Juan Laura Luis Marco Maria Paco Pepe Sofia Sonia</set>		
+
+		<set name="Pelo">rubio moreno marron calvo pelirrojo blanco</set>
+		<set name="Ojos">claros oscuros</set>
+		<set name="Gafas">gafas</set>
+		<set name="Bigote">bigote</set>
+		<set name="Barba">barba</set>
+		<set name="Genero">hombre mujer</set>
+		<set name="Piel">clara oscura</set>
+
+		<set var="cnt">
+			<srai>COUNT <get name="personajes"/></srai>
+		</set>
+		<set var="pos"><srai>RANDOM <get var="cnt"/></srai></set>
+		<set name="elegida">
+			<srai>
+				SELECTITEM <get var="pos"/> IN <get name="personajes"/>
+			</srai>
+		</set>
+
+		la persona elegida es: <get name="elegida"/>
+	</think>
+	</template>
+</category>
+
+
+<category>
+	<pattern>^ <set>cabello</set> ^</pattern>
+	<template>
+		<think>
+		el valor introducido es: <star index="2"/>
+		<set var="busqueda"><map><name><get name="elegida"/></name>Pelo</map></set>
+		<set var="iguales">
+			<srai>
+				COMPARE <get var="busqueda"/> WITH <star index="2"/>
+			</srai>
+		</set>
+	</think>
+		<!-- SI SON IGUALES NO HACEMOS NADA, SI SON DISTINTAS BORRAMOS -->
+		<condition var="iguales">
+			<li value="YES">SI</li>
+			<li>NO</li>
+		</condition>
+	</template>
+</category>
+
+<category>
+	<pattern>^ <set>personajesenteros</set> ^ <set>cabello</set> ^</pattern>
+	<template>
+		<think>
+		<set var="pers"><star index="2"/></set>
+		el personaje es <get var="pers"/>
+		el valor introducido es: <star index="4"/>
+		<set var="busqueda"><map><name><get var="pers"/></name>Pelo</map></set>
+		<set var="iguales">
+			<srai>
+				COMPARE <get var="busqueda"/> WITH <star index="4"/>
+			</srai>
+		</set>
+	</think>
+		<!-- SI SON IGUALES NO HACEMOS NADA, SI SON DISTINTAS BORRAMOS -->
+		<condition var="iguales">
+			<li value="YES">SI</li>
+			<li>NO</li>
+		</condition>
+	</template>
+</category>
+
+
+
+<category>
+	<pattern>^ <set>ojo</set> ^</pattern>
+	<template>
+		<think>
+		<set var="busqueda"><map><name><get name="elegida"/></name>Ojos</map></set>
+		<set var="iguales">
+			<srai>
+				COMPARE <get var="busqueda"/> WITH <star index="2"/>
+			</srai>
+		</set>
+	</think>
+		<!-- SI SON IGUALES NO HACEMOS NADA, SI SON DISTINTAS BORRAMOS -->
+		<condition var="iguales">
+			<li value="YES">SI</li>
+			<li>NO</li>
+		</condition>
+	</template>
+</category>
+
+<category>
+	<pattern>^ <set>personajesenteros</set> ^ <set>ojo</set> ^</pattern>
+	<template>
+		<think>
+		<set var="pers"><star index="2"/></set>
+		<set var="busqueda"><map><name><get var="pers"/></name>Ojos</map></set>
+		<set var="iguales">
+			<srai>
+				COMPARE <get var="busqueda"/> WITH <star index="4"/>
+			</srai>
+		</set>
+	</think>
+		<!-- SI SON IGUALES NO HACEMOS NADA, SI SON DISTINTAS BORRAMOS -->
+		<condition var="iguales">
+			<li value="YES">SI</li>
+			<li>NO</li>
+		</condition>
+	</template>
+</category>
+
+
+
+<category>
+	<pattern>^ <set>gafa</set> ^</pattern>
+	<template>
+		<think>
+		<set var="busqueda"><map><name><get name="elegida"/></name>Gafas</map></set>
+		<set var="iguales">
+			<srai>
+				COMPARE <get var="busqueda"/> WITH si
+			</srai>
+		</set>
+	</think>
+		<!-- SI SON IGUALES NO HACEMOS NADA, SI SON DISTINTAS BORRAMOS -->
+		<condition var="iguales">
+			<li value="YES">SI</li>
+			<li>NO</li>
+		</condition>
+	</template>
+</category>
+
+<category>
+	<pattern>^ <set>personajesenteros</set> ^ <set>gafa</set> ^</pattern>
+	<template>
+		<think>
+		<set var="pers"><star index="2"/></set>
+		<set var="busqueda"><map><name><get var="pers"/></name>Gafas</map></set>
+		<set var="iguales">
+			<srai>
+				COMPARE <get var="busqueda"/> WITH si
+			</srai>
+		</set>
+	</think>
+		<!-- SI SON IGUALES NO HACEMOS NADA, SI SON DISTINTAS BORRAMOS -->
+		<condition var="iguales">
+			<li value="YES">SI</li>
+			<li>NO</li>
+		</condition>
+	</template>
+</category>
+
+
+<category>
+	<pattern>^ <set>barbas</set> ^</pattern>
+	<template>
+		<think>
+		<set var="busqueda"><map><name><get name="elegida"/></name>Barba</map></set>
+		<set var="iguales">
+			<srai>
+				COMPARE <get var="busqueda"/> WITH si
+			</srai>
+		</set>
+	</think>
+		<!-- SI SON IGUALES NO HACEMOS NADA, SI SON DISTINTAS BORRAMOS -->
+		<condition var="iguales">
+			<li value="YES">SI</li>
+			<li>NO</li>
+		</condition>
+	</template>
+</category>
+
+<category>
+	<pattern>^ <set>personajesenteros</set> ^ <set>barbas</set> ^</pattern>
+	<template>
+		<think>
+		<set var="pers"><star index="2"/></set>
+		<set var="busqueda"><map><name><get var="pers"/></name>Barba</map></set>
+		<set var="iguales">
+			<srai>
+				COMPARE <get var="busqueda"/> WITH si
+			</srai>
+		</set>
+	</think>
+		<!-- SI SON IGUALES NO HACEMOS NADA, SI SON DISTINTAS BORRAMOS -->
+		<condition var="iguales">
+			<li value="YES">SI</li>
+			<li>NO</li>
+		</condition>
+	</template>
+</category>
+
+
+
+<category>
+	<pattern>^ <set>bigotes</set> ^</pattern>
+	<template>
+		<think>
+		<set var="busqueda"><map><name><get name="elegida"/></name>Bigote</map></set>
+		<set var="iguales">
+			<srai>
+				COMPARE <get var="busqueda"/> WITH si
+			</srai>
+		</set>
+	</think>
+		<!-- SI SON IGUALES NO HACEMOS NADA, SI SON DISTINTAS BORRAMOS -->
+		<condition var="iguales">
+			<li value="YES">SI</li>
+			<li>NO</li>
+		</condition>
+	</template>
+</category>
+
+<category>
+	<pattern>^ <set>personajesenteros</set> ^ <set>bigotes</set> ^</pattern>
+	<template>
+		<think>
+		<set var="pers"><star index="2"/></set>
+		<set var="busqueda"><map><name><get var="pers"/></name>Bigote</map></set>
+		<set var="iguales">
+			<srai>
+				COMPARE <get var="busqueda"/> WITH si
+			</srai>
+		</set>
+	</think>
+		<!-- SI SON IGUALES NO HACEMOS NADA, SI SON DISTINTAS BORRAMOS -->
+		<condition var="iguales">
+			<li value="YES">SI</li>
+			<li>NO</li>
+		</condition>
+	</template>
+</category>
+
+
+<category>
+	<pattern>^ <set>sexo</set> ^</pattern>
+	<template>
+		<think>
+		<set var="busqueda"><map><name><get name="elegida"/></name>Genero</map></set>
+		<set var="iguales">
+			<srai>
+				COMPARE <get var="busqueda"/> WITH <star index="2"/>
+			</srai>
+		</set>
+	</think>
+		<!-- SI SON IGUALES NO HACEMOS NADA, SI SON DISTINTAS BORRAMOS -->
+		<condition var="iguales">
+			<li value="YES">SI</li>
+			<li>NO</li>
+		</condition>
+	</template>
+</category>
+
+<category>
+	<pattern>^ <set>personajesenteros</set> ^ <set>sexo</set> ^</pattern>
+	<template>
+		<think>
+		<set var="pers"><star index="2"/></set>
+		<set var="busqueda"><map><name><get var="pers"/></name>Genero</map></set>
+		<set var="iguales">
+			<srai>
+				COMPARE <get var="busqueda"/> WITH <star index="4"/>
+			</srai>
+		</set>
+	</think>
+		<!-- SI SON IGUALES NO HACEMOS NADA, SI SON DISTINTAS BORRAMOS -->
+		<condition var="iguales">
+			<li value="YES">SI</li>
+			<li>NO</li>
+		</condition>
+	</template>
+</category>
+
+
+
+<category>
+	<pattern>^ <set>pieles</set> ^</pattern>
+	<template>
+		<think>
+		<set var="busqueda"><map><name><get name="elegida"/></name>Piel</map></set>
+		<set var="iguales">
+			<srai>
+				COMPARE <get var="busqueda"/> WITH <star index="2"/>
+			</srai>
+		</set>
+	</think>
+		<!-- SI SON IGUALES NO HACEMOS NADA, SI SON DISTINTAS BORRAMOS -->
+		<condition var="iguales">
+			<li value="YES">SI</li>
+			<li>NO</li>
+		</condition>
+	</template>
+</category>
+
+<category>
+	<pattern>^ <set>personajesenteros</set> ^ <set>pieles</set> ^</pattern>
+	<template>
+		<think>
+		<set var="pers"><star index="2"/></set>
+		<set var="busqueda"><map><name><get var="pers"/></name>Piel</map></set>
+		<set var="iguales">
+			<srai>
+				COMPARE <get var="busqueda"/> WITH <star index="4"/>
+			</srai>
+		</set>
+	</think>
+		<!-- SI SON IGUALES NO HACEMOS NADA, SI SON DISTINTAS BORRAMOS -->
+		<condition var="iguales">
+			<li value="YES">SI</li>
+			<li>NO</li>
+		</condition>
+	</template>
+</category>
+
+
+<category>
+	<pattern>^ <set>personajesenteros</set> ^</pattern>
+	<template>
+		<think>
+		<set var="iguales">
+			<srai>
+				COMPARE <get name="elegida"/> WITH <star index="2"/>
+			</srai>
+		</set>
+	</think>
+		<!-- SI SON IGUALES NO HACEMOS NADA, SI SON DISTINTAS BORRAMOS -->
+		<condition var="iguales">
+			<li value="YES">SI</li>
+			<li>NO</li>
+		</condition>
+	</template>
+</category>
+
+
+
+
+<category>
+<pattern>HACER PREGUNTA</pattern>
+<template>
+	<think>
+
+	<!-- <set var="cnt">
+		<srai>COUNT <get> <name><get name="ask"/></name></get></srai>
+	</set>
+
+	<set var="pos"><srai>RANDOM <get var="cnt"/></srai></set>
+	<set name="rasgo">
+		<srai>
+		SELECTITEM <get var="pos"/> IN <get name="ask"/>
+		</srai>
+	</set>
+
+	<set var="cnt">
+		<srai>COUNT <get> <name><get name="rasgo"/></name></get></srai>
+	</set>
+
+	<set var="pos"><srai>RANDOM <get var="cnt"/></srai></set>
+	<set name="valorrasgo">
+		<srai>
+		SELECTITEM <get var="pos"/> IN <get> <name><get name="rasgo"/></name></get>
+		</srai>
+	</set> -->
+
+
+		<!-- EXTRAEMOS EL RASGO -->
+	<set name="rasgo"><srai>TOP <get name="ask"/></srai></set>
+	<!-- EXTRAEMOS EL VALOR -->
+	<set name="valorrasgo"><srai>TOP <get> <name><get name="rasgo"/></name></get></srai></set>
+	</think>
+	<!-- BUSCAMOS Y HACEMOS LA PREGUNTA -->
+	<set var="pregunta"><map><name><get name="rasgo"/></name><get name="valorrasgo"/></map></set>
+	<think>
+	<set name="topic">siono</set>
+	</think>
+</template>
+</category>
+
+
+<topic name="siono">
+<category>
+	<pattern>Si</pattern>
+	<template>
+		<!-- <get name="personajes"/> -->
+		<think>
+<!-- 
+			<set var="pos">
+				<srai>FINDITEM <get name="rasgo"/> IN <get name="ask"/></srai>
+			</set>
+
+			<set name="ask">
+				<srai>
+					REMOVEITEM <get var="pos"/> IN <get name="ask"/>
+				</srai>
+			</set> -->
+
+
+			<!-- BORRAMOS LA PREGUNTA -->
+			<set name="ask"><srai>REMAIN <get name="ask"/></srai></set>
+			<set name="sino">YES</set>
+			<set name="trampa">
+				<srai>ADDITEM <get name="rasgo"/> IN <get name="trampa"/></srai>
+			</set>
+
+			los personajes son: <get name="personajes"/>
+			el rasgo buscado es: <get name="rasgo"/>
+			el valor del rasgo es: <get name="valorrasgo"/>
+			lo que queda en el set de rasgo es <get> <name><get name="rasgo"/></name></get>
+			lo que queda en el set de ask es <get name="ask"/>
+
+		</think>
+		<srai>BORRAR PERSONAJE</srai>
+		
+	</template>
+</category>
+
+
+<category>
+	<pattern>No</pattern>
+	<template>
+
+		
+		<think>
+			<!-- <set var="pos">
+				<srai>FINDITEM <get name="valorrasgo"/> IN <get> <name><get name="rasgo"/></name></get></srai>
+			</set>
+
+			<set> <name><get name="rasgo"/></name>
+				<srai>
+					REMOVEITEM <get var="pos"/> IN <get> <name><get name="rasgo"/></name></get>
+				</srai>
+			</set> -->
+			<set> <name><get name="rasgo"/></name><srai>removeitem 1 IN <get> <name><get name="rasgo"/></name></get></srai></set>
+		</think>
+		<think>
+
+			<set var="cnt">
+				<srai>COUNT <get> <name><get name="rasgo"/></name></get></srai>
+			</set>
+
+			<condition var="cnt">
+				<li value="1">
+					<set name="valorrasgo">
+						<srai>TOP <get> <name><get name="rasgo"/></name></get></srai>
+					</set>
+					<set name="trampa">
+						<srai>ADDITEM <get name="rasgo"/> IN <get name="trampa"/></srai>
+					</set>
+					
+					<set name="ask">
+						<srai>REMAIN <get name="ask"/></srai>
+					</set>
+					<!-- <set var="pos">
+						<srai>FINDITEM <get name="rasgo"/> IN <get name="ask"/></srai>
+					</set>
+
+					<set name="ask">
+						<srai>
+							REMOVEITEM <get var="pos"/> IN <get name="ask"/>
+						</srai>
+					</set> -->
+					<set name="sino">YES</set>
+				</li>
+
+				<li><set name="sino">NO</set></li>
+			</condition>
+			los personajes son: <get name="personajes"/>
+			el rasgo buscado es: <get name="rasgo"/>
+			el valor del rasgo es: <get name="valorrasgo"/>
+			lo que queda en el set de rasgo es <get> <name><get name="rasgo"/></name></get>
+			lo que queda en el set de ask es <get name="ask"/>
+		</think>
+		<srai>BORRAR PERSONAJE</srai>
+		
+	</template>
+</category>
+
+</topic>
+
+
+
+<category>
+	<pattern>BORRAR PERSONAJE</pattern>
+	<template>
+			<think>
+			<set var="item">
+				<srai> ITERATE <get name="personajes"/> </srai>
+			</set>
+			</think>
+
+			<!-- BUCLE QUE RECORRE EL SET -->
+		
+			<think>
+			<condition var="item">
+				<!-- MIENTRAS NO SEA EL TERMINADOR -->
+				<li value="end"></li>
+				<li> <get var="item"/>
+					<!-- SACAMOS DEL MAP ASOCIADO AL PERSONAJE SU RESPUESTA A LA PREGUNTA -->
+					<set var="busqueda"><map><name><get var="item"/></name><get name="rasgo"/></map></set>
+					<!-- COMPARAMOS LA RESPUESTA -->
+					<set var="iguales">
+					<srai>
+						COMPARE <get name="valorrasgo"/> WITH <get var="busqueda"/>
+					</srai>
+					</set>
+					<!-- SI SON IGUALES NO HACEMOS NADA, SI SON DISTINTAS BORRAMOS -->
+					<condition var="iguales">
+						<li> <value><get name="sino"/></value></li>
+						<li>
+
+							<!-- BUSCAMOS LA POSICION -->
+							<set var="pos">
+								<srai>FINDITEM <get var="item"/> IN <get name="personajes"/></srai>
+							</set>
+							<!-- SI ES IGUAL LA BORRAMO -->
+							<set name="personajes">
+								<srai>
+									REMOVEITEM <get var="pos"/> IN <get name="personajes"/>
+								</srai>
+							</set>
+						</li>
+					</condition>
+
+					<!-- AVANZAMOS ITERACCIONES -->
+					<think>
+					<set var="item">
+					<srai>NEXT</srai>
+					</set>
+					</think>
+					<loop/>
+				</li>
+			</condition>
+
+
+		</think>
+		<!-- CONTAMOS NUMERO DE PERSONAJES -->
+		<think>
+			<set var="cantidad">
+				<srai>COUNT <get name="personajes"/></srai>
+			</set>
+		</think>
+
+		<!-- El numero de personajes es <get var="cantidad"/> -->
+
+		<!-- <get name="personajes"/> -->
+
+		<!-- SI SOLO QUEDA UNO TERMINAMOS SI NO VOLVEMOS A PREGUNTAR -->
+
+		<condition var="cantidad">
+			<li value="1">
+				<think>
+				<set name="trampa">
+					<srai>ADDITEM <get name="rasgo"/> IN <get name="trampa"/></srai>
+				</set>
+			</think>
+				<srai>ADIVINAR PERSONAJE</srai>
+			</li>
+
+			<li value="0">
+				La respuestas no corresponden a ningun personaje. la proxima vez intenta jugar bien.
+			</li>
+
+			<li>
+				<think>
+				<set name="topic">unknown</set>
+				</think>
+				<srai>HACER PREGUNTA</srai>
+			</li>
+		</condition>
+	</template>
+</category>
+
+
+<category>
+	<pattern>ADIVINAR PERSONAJE</pattern>
+	<template>
+		<think>
+		<set name="trampavalorrasgo">
+			<srai>ADDITEM <get name="valorrasgo"/> IN <get name="trampavalorrasgo"/></srai>
+		</set>
+		</think>
+		¿Es <set name="encontrado"><srai>TOP <get name="personajes"/></srai></set>?
+
+
+
+		<think>
+		<set name="topic">adivina</set>
+		</think>
+	</template>
+</category>
+
+<topic name="adivina">
+<category>
+	<pattern>Si</pattern>
+	<template>
+		¡¡¡¡He Ganado!!!!
+		<think>
+			<set name="topic">unknown</set>
+		</think>
+	</template>
+</category>
+
+<category>
+	<pattern>No</pattern>
+	<template>
+		Quien es
+	</template>
+</category>
+
+<category>
+	<pattern><set>personajesenteros</set></pattern>
+	<that>QUIEN ES</that>
+	<template>
+
+		<think>
+			<set var="pers"><star/></set>
+			<set var="err">,</set>
+			<set var="tiene">,</set>
+			<set var="notiene">,</set>
+			<set var="erres">unknown</set>
+			<set var="errmes">unknown</set>
+			<set var="ras">
+				<srai> ITERATE <get name="trampa"/> </srai>
+			</set>
+
+			el valor de trampa es <get name="trampa"/>
+
+			el valor de ras es <get var="ras"/>
+		</think>
+
+		<think>
+			<condition var="ras">
+				<!-- MIENTRAS NO SEA EL TERMINADOR -->
+
+				
+
+				<li value="end"></li>
+				<li>
+					<!-- el valor de ras es <get var="ras"/> -->
+					<!-- <think> -->
+					<set var="busqueda"><map><name><get var="pers"/></name> <get var="ras"/></map></set>
+					Busqueda vale: <get var="busqueda"/>
+
+					<set var="busquedaenc"><map><name><get name="encontrado"/></name><get var="ras"/></map></set>
+
+					<set var="iguales">
+						<srai>
+							COMPARE <get var="busquedaenc"/> WITH <get var="busqueda"/>
+						</srai>
+					</set>
+					<!-- </think> -->
+
+					<condition var="iguales">
+						<li value="YES"></li>
+						<li>
+							<!-- <think> -->
+							<condition var="ras">
+								<li value="Barba">
+									<!-- <think> -->
+									<condition var="busqueda">
+										<li value="si">
+											<set var="tiene">
+												<srai>ADDITEM <get var="ras"/> IN <get var="tiene"/></srai>
+											</set>
+										</li>
+										<li>
+											<set var="notiene">
+												<srai>ADDITEM <get var="ras"/> IN <get var="notiene"/></srai>
+											</set>
+										</li>
+									</condition>
+								<!-- </think> -->
+								</li>
+
+								<li value="Gafas">
+									<!-- <think> -->
+									<condition var="busqueda">
+										<li value="si">
+											<set var="tiene">
+												<srai>ADDITEM <get var="ras"/> IN <get var="tiene"/></srai>
+											</set>
+										</li>
+										<li>
+											<set var="notiene">
+												<srai>ADDITEM <get var="ras"/> IN <get var="notiene"/></srai>
+											</set>
+										</li>
+									</condition>
+								<!-- </think> -->
+								</li>
+
+								<li value="Bigote">
+									<!-- <think> -->
+									<condition var="busqueda">
+										<li value="si">
+											<set var="tiene">
+												<srai>ADDITEM <get var="ras"/> IN <get var="tiene"/></srai>
+											</set>
+										</li>
+										<li>
+											<set var="notiene">
+												<srai>ADDITEM <get var="ras"/> IN <get var="notiene"/></srai>
+											</set>
+										</li>
+									</condition>
+								<!-- </think> -->
+								</li>
+
+								<li value="Genero">
+									<!-- <think> -->
+									<set var="erres"><get var="busqueda"/></set>
+									<set var="errmes"><get var="busquedaenc"/></set>
+									<!-- </think> -->
+								</li>
+								<li>
+									<!-- <think> -->
+									<set var="tiene">
+										<srai>ADDITEM <get var="busqueda"/> IN <get var="tiene"/></srai>
+									</set>
+									<set var="tiene">
+										<srai>ADDITEM <get var="ras"/> IN <get var="tiene"/></srai>
+									</set>
+								<!-- </think> -->
+								</li>
+							</condition>
+						<!-- </think> -->
+
+							<!-- <set var="err">
+								<srai>ADDITEM <get var="ras"/> IN <get var="err"/></srai>
+							</set> -->
+						</li>
+					</condition>
+					<think>
+					<set var="ras">
+						<srai>NEXT</srai>
+					</set>
+					</think>
+					<loop/>
+				</li>
+			</condition>
+		</think>
+<!-- 
+		el valor de erres es <get var="erres"/>
+		el valor del otro es <get var="errmes"/> -->
+
+		<condition var="erres">
+			<li value="unknown">
+				<condition var="tiene">
+					<li value=",">
+						<condition var="notiene">
+							<li value=","></li>
+							<li>Eso es mentira <star/> no tiene <get var="notiene"/> y tu me has dicho que si.</li>
+						</condition>
+					</li>
+					<li>Eso es mentira <star/> tiene <get var="tiene"/> y tu me has dicho que no.</li>
+				</condition>
+			</li>
+
+			<li>
+				Mentira <star/> es <get var="erres"/> y <get name="encontrado"/> es <get var="errmes"/>.
+			</li>
+		</condition>
+
+	</template>
+</category>
+
+</topic>
+
+
+
+</aiml>

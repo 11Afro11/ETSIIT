@@ -1,0 +1,7 @@
+pelo:moreno
+ojos:oscuros
+piel:oscura
+gafas:no
+bigote:si
+barba:si
+genero:hombre
